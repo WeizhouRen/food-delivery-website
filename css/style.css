@@ -1,0 +1,889 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat|Poiret+One|Thasadith');
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Thasadith', sans-serif;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.visible {
+	visibility: visible;
+}
+
+/* HEADER */
+header {
+	display: block;
+}
+
+#hr-head {
+	color: grey;
+}
+
+#search-container button {
+	background-color: transparent;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+
+#search-container .fa {
+	/* padding-top: 30px; */
+	font-size: 30px;
+	width: 20px;
+	height: 30px;
+	text-align: center;
+	text-decoration: none;
+}
+
+/* SEARCH RESULT  */
+#livesearch {
+	border-radius: 3px;
+	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+}
+
+.search {
+	display: flex;
+	justify-content: space-between;
+	transition: background-color .5s;
+	padding: 0.5em;
+}
+
+.search:hover {
+	background-color: #F7DCB4;
+	opacity: 0.7;
+}
+
+.search-name {
+	text-decoration: none;
+	padding-left: 2em;
+	color: black;
+}
+
+.search-keywards {
+	padding-right: 2em;
+	color: lightgray;
+	font-size: 11px;
+}
+
+.popup-form {
+	display: none;
+	position: fixed;
+	z-index: 99999999;
+	margin: auto;
+	background-color: rgba(0, 0, 0, .25);
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.form-container {
+	align-self: center;
+	background-color: white;
+	margin: 2rem auto;
+	padding: 0.5em 1em;
+	border: 3px solid #f1f1f1;
+}
+
+.form-container h1 {
+	font-family: 'Poiret One', cursive;
+	color: #587058;
+	margin: 1em;
+}
+
+.form-container label b {
+	margin-top: 2em;
+	font-family: 'Thasadith', sans-serif;
+	color: darkgrey;
+}
+
+#identity-radio-container {
+	display: flex;
+	justify-content: space-between;
+	width: 60%;
+}
+
+#remember {
+	display: flex;
+	width: 45%;
+}
+
+#remember input[type=checkbox] {
+	margin: 5px;
+}
+
+#remember p {
+	font-size: 16px;
+	font-family: 'Thasadith', sans-serif;
+	color: lightgrey;
+	margin-left: 5px;
+	text-align: center;
+}
+
+.form-container input[type=radio] {
+	margin: 10px 5px 15px 0;
+}
+
+.signup-radio label {
+	font-family: 'Thasadith', sans-serif;
+}
+
+.form-container input[type=text],
+.form-container input[type=password],
+.form-container input[type=email],
+.form-container input[type=number],
+.checkout-info, .comment{
+	box-sizing: border-box;
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 15px 0;
+	border: none;
+	background: #f1f1f1;
+}
+
+.form-container input[type=text]:focus,
+.form-container input[type=password]:focus {
+	background-color: #ddd;
+	outline: none;
+}
+
+/* For Angular */
+input.ng-invalid.ng-touched {
+	border: 1px solid #da3637;
+}
+
+input.ng-valid.ng-touched {
+	border: 1px solid #587058;
+}
+
+.form-error {
+	color: #da3637;
+	font-family: 'Thasadith', sans-serif;
+	font-weight: lighter;
+	margin-bottom: 10px;
+}
+
+.btn {
+	background-color: #9C9F84;
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	margin-bottom: 10px;
+	opacity: 0.8;
+}
+
+.remove-btn {
+	background-color: #da3637;
+	color: white;
+	padding: 5px 10px;
+	border: none;
+	cursor: pointer;
+	margin-bottom: 10px;
+	opacity: 0.8;
+}
+
+.form-container .btn:hover,
+.open-button:hover {
+	opacity: 1;
+}
+
+#login-form-container {
+	width: 350px;
+}
+
+#signup-form-container,
+#update-form-container {
+	width: 70%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.signup-div {
+	width: 400px;
+}
+
+#signup-right {
+	margin-top: 1em;
+}
+
+.preview-avatar {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	position: relative;
+	border: 1px solid lightslategray;
+	margin: auto;
+	z-index: 999;
+	overflow: hidden;
+}
+
+.preview-avatar-image {
+	display: inline;
+	margin: 0 auto;
+	height: 100%;
+	width: auto;
+}
+
+#title {
+	display: flex;
+	margin: auto;
+	padding-top: 7rem;
+	padding-bottom: 5rem;
+}
+
+#title h1 {
+	font-size: 8vw;
+	text-align: center;
+	margin: auto;
+	font-family: 'Poiret One', cursive;
+	font-weight: lighter;
+	color: #587058;
+}
+
+#register-label {
+	display: flex;
+	justify-content: space-around;
+	position: fixed;
+	width: 100%;
+	/* box-shadow: 3px 5px 20px lightgrey; */
+	background: white;
+	z-index: 11111;
+}
+
+#search-container input[type=text] {
+	border: 1px solid #587058;
+	border-radius: 3px;
+	padding: 0.5em 1em;
+	margin: 1em;
+	width: 400px;
+	height: 25px;
+}
+
+#register-container {
+	display: inline-block;
+	right: 0;
+	position: relative;
+}
+
+.labels {
+	display: flex;
+	justify-content: space-around;
+}
+
+.labels label {
+	padding: 0 1em;
+}
+
+#register-label label {
+	margin-top: 1em;
+	display: block;
+}
+
+#register-label label:hover {
+	color: #587058;
+	text-decoration: underline;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+#register-label label p,
+#register-label label a {
+	text-decoration: none;
+	color: black;
+	font-family: 'Poiret One', cursive;
+}
+
+.dropdown-menu {
+	display: none;
+	position: absolute;
+	border: 1px solid #587058;
+	background-color: white;
+	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+	min-width: 120px;
+	z-index: 1;
+	margin: 1em 0em;
+}
+
+.dropdown-menu li {
+	list-style: none;
+	padding: 1em 0.5em;
+}
+
+.dropdown-menu li a {
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	color: black;
+}
+
+#register-container:hover .dropdown-menu {
+	display: block;
+}
+
+/* NAVBAR */
+#nav-container {
+	display: inline;
+	padding: 1em;
+}
+
+#nav {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	justify-content: space-around;
+}
+
+#nav li {
+	list-style: none;
+}
+
+#nav li a {
+	text-decoration: none;
+	color: black;
+	font-size: 1rem;
+	font-family: 'Thasadith', sans-serif;
+}
+
+#nav li a:hover {
+	color: lightgrey;
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+/* BACKGROUND */
+#fixed-background {
+	width: 100%;
+	background-image: url("../img/pasta.jpg");
+	background-position: center;
+	background-size: 100%;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+
+#order-now {
+	font-size: 4rem;
+	text-align: center;
+	font-family: 'Poiret One', cursive;
+	margin: auto;
+	padding: 16rem;
+}
+
+#order-now label {
+	border: 3px solid white;
+	color: white;
+	padding: 10px;
+	transition: 0.5s;
+}
+
+#order-now label:hover {
+	border: 3px solid darkgrey;
+	color: darkgrey;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+/* RECOMMONDATION */
+#recommondation {
+	width: 80%;
+	margin: auto;
+}
+
+#recom-title {
+	font-family: 'Thasadith', sans-serif;
+	font-weight: lighter;
+	margin-top: 10rem;
+	font-size: 2rem;
+}
+
+.recom-container {
+	display: flex;
+	justify-content: space-around;
+	margin: 5em 0;
+	text-decoration: none;
+	color: black;
+}
+
+.recom-dishes-title {
+	font-family: 'Poiret One', cursive;
+	margin: 1em;
+}
+
+.recom-pic img {
+	width: 30rem;
+}
+.recom-pic a {
+	text-decoration: none;
+	color: lightslategray;
+}
+.recom-desc {
+	width: 50%;
+	font-family: 'Thasadith', sans-serif;
+}
+.recom-desc p {
+	font-size: 20px;
+}
+#recom-rname {
+	font-size: 25px;
+	font-weight: bolder;
+}
+/* FOOTER */
+footer {
+	background: #A97D5D;
+}
+
+#footer-container {
+	width: 80%;
+	margin: auto;
+	padding: 5em;
+	display: flex;
+	justify-content: space-between;
+}
+
+#category-container {
+	width: 70%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.category-title {
+	font-family: 'Thasadith', sans-serif;
+	color: #F7DCB4;
+	font-size: 1.3rem;
+	margin-bottom: 5px;
+}
+
+.category-list {
+	list-style: none;
+	font-family: 'Poiret One', cursive;
+	font-size: 1.2rem;
+	color: aliceblue;
+}
+
+.category-list li {
+	margin: 10px;
+	opacity: 0.7;
+}
+
+.category-list li:hover {
+	opacity: 1;
+}
+
+#follow-us {
+	color: #F7DCB4;
+	font-family: 'Thasadith', sans-serif;
+	font-size: 1.3rem;
+	padding-bottom: 2em;
+}
+
+#social-media .fa {
+	padding: 20px;
+	font-size: 25px;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	border-radius: 50%;
+}
+
+#social-media .fa:hover {
+	opacity: 0.7;
+}
+
+#hr-footer {
+	width: 90%;
+	margin: auto;
+}
+
+/* COPYRIGHT */
+#copyright-container {
+	font-family: 'Thasadith', sans-serif;
+	padding: 10px;
+	color: #f1f1f1;
+	opacity: 0.7;
+	width: 90%;
+	margin: auto;
+	text-align: center;
+}
+
+/* RESTAURANT PAGE */
+#restaurant-page-bg {
+	width: 100%;
+	background-image: url("../img/indexbg.jpg");
+	background-position: center center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	padding: 0.3rem 4rem;
+}
+
+#restaurant-list {
+	/* width: 80%; */
+	display: flex;
+	justify-content: space-between;
+	margin: 3em auto;
+	box-sizing: border-box;
+	flex-wrap: wrap;
+}
+
+.restaurant-detail {
+	padding: 3em 4em;
+	margin: 4em 0;
+	width: 300px;
+	background-color: white;
+	border-radius: 5px;
+}
+
+.restaurant-detail h2 {
+	font-size: 30px;
+	font-family: 'Poiret One', cursive;
+	margin-bottom: 3em;
+}
+
+.restaurant-detail label {
+	color: lightgrey;
+}
+
+.restaurant-detail p {
+	color: lightgrey;
+	font-size: 20px;
+}
+
+.detail-info {
+	margin: 0.5em;
+}
+
+#dishes-list {
+	width: 80%;
+	display: flex;
+	justify-content: space-between;
+	margin: 3em auto;
+	box-sizing: border-box;
+	flex-wrap: wrap;
+}
+
+#select-category {
+	width: 80%;
+	justify-content: center;
+	display: block;
+	margin: 3em auto;
+	box-sizing: border-box;
+}
+
+#select-category form {
+	display: flex;
+}
+
+#category-title {
+	font-family: 'Thasadith', sans-serif;
+}
+
+#picker {
+	width: 30%;
+	height: 40px;
+	font-size: 20px;
+	font-family: 'Thasadith', sans-serif;
+	margin-left: 30px;
+}
+
+.restaurant,
+.dish {
+	display: block;
+	width: 300px;
+	box-sizing: border-box;
+	padding: 2em 0;
+}
+
+.restaurant-name,
+.dish-name {
+	font-family: 'Thasadith', sans-serif;
+	font-size: 20px;
+	margin: 10px 0;
+	text-decoration: none;
+	color: black;
+}
+
+.restaurant-keywords,
+.dish-price {
+	font-family: 'Thasadith', sans-serif;
+	font-size: 16px;
+	color: darkgrey;
+}
+
+.restaurant-tag {
+	display: inline-flex;
+}
+
+.restaurant-tag label {
+	width: 50px;
+	height: 23px;
+	background: lightgrey;
+	margin-top: 15px;
+	margin-right: 2em;
+	border-radius: 2px;
+}
+
+.text-center {
+	font-size: 3rem;
+	font-family: 'Thasadith', sans-serif;
+	color: lightgrey;
+	text-align: center;
+	margin: 5em 0;
+}
+
+#profile-username h1 {
+	text-align: center;
+	font-family: 'Poiret One', cursive;
+	font-weight: bolder;
+	margin-top: 4em;
+}
+
+#profile-userinfo {
+	display: flex;
+	justify-content: space-around;
+	width: 80%;
+	margin: 4em auto;
+}
+
+#profile-column2 {
+	display: block;
+	text-align: center;
+}
+
+.profile-info-component {
+	display: block;
+	margin: 3em 0;
+}
+
+.profile-info {
+	font-family: 'Poiret One', cursive;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.profile-content {
+	font-family: 'Thasadith', sans-serif;
+	margin: 2em 0;
+}
+
+.status-not-available {
+	color: #da3637;
+	font-family: 'Thasadith', sans-serif;
+	margin-bottom: 10px;
+}
+
+.status-available {
+	color: #587058;
+	font-family: 'Thasadith', sans-serif;
+	margin-bottom: 10px;
+}
+
+/* --- CART PAGE ---*/
+#cart-container {
+	width: 80%;
+	margin: 3em auto;
+	background-color: #f9f9f9;
+	display: block;
+	border-radius: 5px;
+}
+
+#cart-username h1 {
+	font-family: 'Thasadith', sans-serif;
+	padding: 2em 0;
+	font-weight: bolder;
+}
+
+#cart-content {
+	display: flex;
+	justify-content: space-between;
+	padding: 2em;
+}
+
+#cart-column-1,
+#cart-column-2 {
+	display: block;
+}
+
+.dish-block {
+	display: flex;
+	margin: 1em 0;
+}
+
+.dish-info {
+	display: block;
+	margin: 1em 0;
+}
+
+.dish-info-name {
+	font-size: 20px;
+	margin-bottom: 1em;
+}
+
+.dish-info-price {
+	font-size: 25px;
+	color: #A97D5D;
+	font-weight: bolder;
+	margin-bottom: 1em;
+}
+
+.dish-pic {
+	width: 200px;
+	height: 150px;
+	overflow: hidden;
+	margin-right: 2em;
+}
+
+.dish-pic img {
+	width: 200px;
+	height: 150px;
+}
+
+.update-block {
+	display: flex;
+}
+
+.qty {
+	display: flex;
+	margin-right: 2em;
+}
+
+.qty-input {
+	width: 20px;
+	height: 20px;
+	margin-left: 1em;
+	padding-left: 1em;
+}
+
+#cart-column-1 {
+	width: 60%;
+}
+
+#cart-column-2 {
+	width: 30%;
+	height: 400px;
+	background-color: white;
+	border-radius: 10px;
+	padding: 1em;
+}
+
+#cart-column-2 h1 {
+	margin: 1.5em 0;
+}
+
+.checkout-ele {
+	margin: 1em 0;
+}
+
+#dishes-table {
+	width: 100%;
+	border: 2px solid #587058;
+}
+
+table,
+th,
+td {
+	border: 1px solid #9C9F84;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	padding: 15px;
+	text-align: left;
+}
+
+table#dishes-table tr:nth-child(even) {
+	background-color: #eee;
+}
+
+table#dishes-table tr:nth-child(odd) {
+	background-color: #fff;
+}
+
+table#dishes-table th {
+	background-color: #587058;
+	color: white;
+}
+
+#profile-table {
+    width: 80%;
+	margin: 2em auto;
+}
+
+.operation-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.update-btn {
+    background-color: #587058;
+}
+
+.delete-btn {
+    background-color: #da3637;
+}
+
+.profile-dish {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid #587058;
+    font-size: 16px;
+}
+
+#add-dish {
+    margin: 2em auto;
+}
+
+.add-ele {
+    margin: 1em 0;
+    display: block;
+}
+
+#add-c1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+#map {
+	width: 80%;
+	height: 400px;
+	margin: auto;
+	margin-bottom: 4em;
+}
+
+.container {
+	width: 80%;
+	margin: 1em auto;
+}
+
+.dish-comment h3 {
+	margin: 1em 0;
+}
+
+.dish-comment p {
+	margin: 0.5em 0;
+}
+
+.add-comment {
+	margin: 2em 0;
+	display: block;
+}
+.comment-option {
+	display: block;
+	padding: 1em 0;
+}
+.com-text {
+	padding-left: 3em;
+}
+
+.com-date {
+	color: lightgrey;
+}
+
