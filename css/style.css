@@ -688,7 +688,6 @@ footer {
 	width: 80%;
 	margin: 3em auto;
 	background-color: #f9f9f9;
-	display: block;
 	border-radius: 5px;
 }
 
@@ -887,3 +886,11 @@ table#dishes-table th {
 	color: lightgrey;
 }
 
+#checkout-form {
+	width: 80%;
+	margin: auto;
+	border: 3px solid #587058;
+	border-radius: 3px;
+	padding: 2em;
+	margin-bottom: 3em;
+}

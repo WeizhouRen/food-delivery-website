@@ -1,10 +1,11 @@
 $(document).ready(function () {
 	$(".animated").scrollClass(); // Validate scroll calss
+
+	$("#confirm-btn").click(function () {
+		$("#checkout-form").slideDown("slow");
+	});
 });
 var $base_url = 'https://infs3202-0f70f4d3.uqcloud.net/';
-
-var heightTop = document.documentElement.scrollTop || document.body.scrollTop;
-console.log(heightTop);
 
 function checkUsernameAvailability() {
 	jQuery.ajax({
@@ -113,3 +114,8 @@ function showResult(str) {
 		document.getElementById("livesearch").style.border = "none";
 	}
 }
+
+// function showSummary() {
+// 	var element = document.getElementById("checkout-form");
+//   	element.classList.show("checkout-form");
+// }

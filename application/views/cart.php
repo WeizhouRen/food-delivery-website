@@ -45,27 +45,29 @@
                     <div id="total-price">
                         <section class="checkout-ele">
                             <h3>Delivery Address:</h3>
-                            <input class="checkout-info" name="address" value="<?php echo $user['address']; ?>" type="text">
+                            <input class="checkout-info" name="address" value="<?php echo $user['address']; ?>" type="text" <?php if ($hasConfirmed || $dishes == null): echo 'disabled'; endif;?>>
                         </section>
                         <section class="checkout-ele">
                             <h3>Phone:</h3>
-                            <input class="checkout-info" name="phone" value="<?php echo $user['phone']; ?>" type="number">
+                            <input class="checkout-info" name="phone" value="<?php echo $user['phone']; ?>" type="number" <?php if ($hasConfirmed || $dishes == null): echo 'disabled'; endif;?>>
                         </section>
                         <section class="checkout-ele">
                             <p id="total">TOTAL: $<?php echo $total; ?></p>
                         </section>
                     </div>
-                    <a href="#checkout-form">
-                        <button class="btn" type="submit">CONFIRM</button>
-                    </a>
+                    <!-- <button class="btn" type="submit" onclick="showSummary()" <?php if ($dishes == null): echo 'disabled'; endif;?>>CONFIRM</button> -->
+                    <input type="submit" class="btn" name="confirm-btn" value="CONFIRM" <?php if ($hasConfirmed || $dishes == null): echo 'disabled'; endif;?>>
                 </form>
 
             </div>
-
-            <div id="checkout-form">
-                <h1>Things you want listed below</h2>
-            </div>
         </section>
+
+
+        <?php if (isset($_POST["confirm-btn"])):?>
+        <section id="checkout-form">
+            <h1>Summary</h2>
+        </section>
+        <?php endif;?>
     <?php else : ?>
     <p class="text-center">Please sign in first!</p>
     <?php endif ?>

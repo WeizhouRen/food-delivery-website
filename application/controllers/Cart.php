@@ -10,6 +10,7 @@ class Cart extends CI_Controller {
         $this->data["dishes"] = null;
         $this->data['total'] = 0;
         $this->data['user'] = null;
+        $this->data['hasConfirmed'] = false;
     }
 
     public function index() {
@@ -74,6 +75,8 @@ class Cart extends CI_Controller {
         VALUES ($userid, $did, $phone, '$address');";
             $this->db->query($sql);
         endforeach;
+        $this->data['hasConfirmed'] = true;
+        $this->index();
         
     }
 }
