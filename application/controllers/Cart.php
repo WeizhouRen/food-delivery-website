@@ -6,6 +6,7 @@ class Cart extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('cart_model');
+        $this->load->model('users_model');
         $this->data["dishes"] = null;
         $this->data['total'] = 0;
         $this->data['user'] = null;
@@ -46,7 +47,7 @@ class Cart extends CI_Controller {
         $total = 0.0;
         $dishes = $this->cart_model->get_dishes_in_cart($_SESSION["username"]);
         foreach ($dishes as $dish) :
-            $cid = $this->cart_model->get_cid($this->cart_model->get_userid($_SESSION["username"]), $dish["did"]);
+            $cid = $this->cart_model->get_cid($this->users_model->get_userid($_SESSION["username"]), $dish["did"]);
             $qty = $this->db->query("SELECT qty FROM cart WHERE cid = $cid");
             $total = $total + $dish["price"] * (int)$qty->result();
         endforeach;
@@ -57,5 +58,22 @@ class Cart extends CI_Controller {
         $cid = $this->cart_model->get_cid($userid, $did);
         $qty = $this->db->query("SELECT qty FROM cart WHERE cid = $cid;")->result();
         return $qty;
+    }
+
+    public function checkout () {
+        $address = $_POST["address"];
+        $phone = $_POST["phone"];
+        // get userid from username
+        $username = $_SESSION["username"];
+        $userid = $this->users_model->get_userid($username);
+        // get dishes id from cart table 
+        $dishes = $this->cart_model->get_dishes_in_cart($username);
+        foreach ($dishes as $dish) :
+            $did = $dish["did"];
+            $sql = "INSERT INTO `orders`(`userid`, `did`, `phone`, `address`) 
+        VALUES ($userid, $did, $phone, '$address');";
+            $this->db->query($sql);
+        endforeach;
+        
     }
 }

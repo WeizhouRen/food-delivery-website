@@ -11,7 +11,7 @@ class Cart_model extends CI_Model {
         return $dishes->result_array();
     }
 
-    public function get_userid($username) {
+    private function get_userid($username) {
         $user = $this->db->query("SELECT * FROM user WHERE username = '$username'");
         $result = $user->row_array();
         $userid = $result["userid"];

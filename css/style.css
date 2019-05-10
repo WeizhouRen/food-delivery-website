@@ -692,7 +692,7 @@ footer {
 	border-radius: 5px;
 }
 
-#cart-username h1 {
+.cart-username h1 {
 	font-family: 'Thasadith', sans-serif;
 	padding: 2em 0;
 	font-weight: bolder;

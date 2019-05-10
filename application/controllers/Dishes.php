@@ -57,7 +57,7 @@ class Dishes extends CI_Controller {
 
     public function add_comment() {
         $username = $_SESSION["username"];
-        $userid = $this->cart_model->get_userid($username);
+        $userid = $this->users_model->get_userid($username);
         $text = $_POST["comment"];
         $rate = $_POST["rate"];
         $rid = $_POST["rid"];

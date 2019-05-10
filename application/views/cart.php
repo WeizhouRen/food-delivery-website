@@ -3,7 +3,7 @@
         <section id="cart-container">
             <div id="cart-content">
                 <div id="cart-column-1" class="order-list">
-                    <div id="cart-username">
+                    <div class="cart-username">
                         <?php
                         $my_cart = $_SESSION["username"] . "'s Cart";
                         echo '<h1>' . $my_cart . '</h1>';
@@ -40,7 +40,7 @@
                 endif;
                 ?>
                 </div>
-                <form id="cart-column-2" class="checkout-form">
+                <form id="cart-column-2" class="checkout-form" method="POST" action="<?php echo base_url()?>cart/checkout">
                     <h2>Your Order Form</h2>
                     <div id="total-price">
                         <section class="checkout-ele">
@@ -49,15 +49,21 @@
                         </section>
                         <section class="checkout-ele">
                             <h3>Phone:</h3>
-                            <input class="checkout-info" name="address" value="<?php echo $user['phone']; ?>" type="number">
+                            <input class="checkout-info" name="phone" value="<?php echo $user['phone']; ?>" type="number">
                         </section>
                         <section class="checkout-ele">
                             <p id="total">TOTAL: $<?php echo $total; ?></p>
                         </section>
                     </div>
-                    <!-- <button class="btn">CHECK OUT</button> -->
+                    <a href="#checkout-form">
+                        <button class="btn" type="submit">CONFIRM</button>
+                    </a>
                 </form>
 
+            </div>
+
+            <div id="checkout-form">
+                <h1>Things you want listed below</h2>
             </div>
         </section>
     <?php else : ?>
