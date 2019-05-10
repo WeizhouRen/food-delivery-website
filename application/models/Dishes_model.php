@@ -24,4 +24,10 @@ class Dishes_model extends CI_Model {
         VALUES ('$name', $rid, $price, '$path', '$description')";
         $this->db->query($query);
     }
+
+    public function get_dish_info($did) {
+        $query = "SELECT * FROM dishes WHERE did= '$did'";
+        $dishes = $this->db->query($query);
+        return $dishes->row_array();
+    }
 }

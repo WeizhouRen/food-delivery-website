@@ -7,10 +7,15 @@ class Cart extends CI_Controller {
         parent::__construct();
         $this->load->model('cart_model');
         $this->load->model('users_model');
+        $this->load->model('dishes_model');
         $this->data["dishes"] = null;
         $this->data['total'] = 0;
         $this->data['user'] = null;
         $this->data['hasConfirmed'] = false;
+        $this->data['ordernumber'] = 0;
+        $this->data['orderphone'] = 0;
+        $this->data['orderaddress'] = null;
+        $this->data['orderinfo'] = null;
     }
 
     public function index() {
@@ -69,14 +74,35 @@ class Cart extends CI_Controller {
         $userid = $this->users_model->get_userid($username);
         // get dishes id from cart table 
         $dishes = $this->cart_model->get_dishes_in_cart($username);
+        $order_number = mt_rand();
         foreach ($dishes as $dish) :
             $did = $dish["did"];
-            $sql = "INSERT INTO `orders`(`userid`, `did`, `phone`, `address`) 
-        VALUES ($userid, $did, $phone, '$address');";
+            $sql = "INSERT INTO `orders`(`userid`, `did`, `phone`, `address`, `ordernumber`) 
+        VALUES ($userid, $did, $phone, '$address', $order_number);";
             $this->db->query($sql);
         endforeach;
         $this->data['hasConfirmed'] = true;
+        $this->data['ordernumber'] = $order_number;
+        $this->data['orderphone'] = $this->get_order_info()[0]["phone"];
+        $this->data['orderaddress'] = $this->get_order_info()[0]["address"];
+        $this->data['ordered_dishes'] = $this->get_ordered_dishes_info();
         $this->index();
-        
+    }
+
+    public function get_order_info() {
+        $order_number = $this->data['ordernumber'];
+        $order_info = $this->db->query("SELECT * FROM orders WHERE ordernumber = $order_number")->result_array();
+        return $order_info;
+    }
+
+    public function get_ordered_dishes_info() {
+        $order_info = $this->get_order_info();
+        $dishes = [];
+        foreach ($order_info as $row) :
+            $did = $row["did"];
+            $row = $this->dishes_model->get_dish_info($did);
+            $dishes[] = $row;
+        endforeach;
+        return $dishes;
     }
 }

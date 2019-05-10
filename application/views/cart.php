@@ -66,6 +66,17 @@
         <?php if (isset($_POST["confirm-btn"])):?>
         <section id="checkout-form">
             <h1>Summary</h2>
+            <p>Order Number: <?php echo $ordernumber?></p>
+            <p>Username: <?php echo $_SESSION["username"]?></p>
+            <p>Mobile: <?php echo $orderphone?></p>
+            <p>Address: <?php echo $orderaddress?></p>
+            <hr>
+            <?php foreach ($ordered_dishes as $od) :?>
+                <div class="od">
+                    <label>Dish Name: <?php echo $od["name"]?></label><br>
+                    <label>Dish Price: <?php echo $od["price"]?></label><br>
+                </div>
+            <?php endforeach;?>
         </section>
         <?php endif;?>
     <?php else : ?>
