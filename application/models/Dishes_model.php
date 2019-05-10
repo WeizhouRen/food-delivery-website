@@ -24,13 +24,4 @@ class Dishes_model extends CI_Model {
         VALUES ('$name', $rid, $price, '$path', '$description')";
         $this->db->query($query);
     }
-
-    /**
-     * Get the restaurant which has the highest rate score (average rate)
-     */
-    public function most_popular() {
-        $sql = "SELECT `comments`.rid, AVG(rate) AS `rate`, rname, rcover FROM `comments`, `restaurant` WHERE `comments`.rid = `restaurant`.rid GROUP BY rid ORDER BY rate DESC LIMIT 1;";
-        $result = $this->db->query($sql);
-        return $result->row_array();
-    }
 }
