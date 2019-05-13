@@ -105,4 +105,14 @@ class Cart extends CI_Controller {
         endforeach;
         return $dishes;
     }
+
+    /**
+    * Get Download PDF File
+    *
+    * @return Response */
+    public function pdf() {
+        $this->load->helper('pdf_helper');
+        
+        $this->load->view('pdf', $this->data);
+    }
 }
