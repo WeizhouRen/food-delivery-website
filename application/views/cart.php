@@ -63,7 +63,7 @@
         </section>
 
 
-        <?php if (isset($_POST["confirm-btn"])):?>
+        <?php if ($hasConfirmed):?>
         <section id="checkout-form">
             <h1>Summary</h2>
             <p>Order Number: <?php echo $ordernumber?></p>
@@ -77,8 +77,9 @@
                 </div>
             <?php endforeach;?>
             <p>TOTAL: <?php echo $total?></p>
-
-            <button class="btn" id="pay-btn">PAY</button>
+            <a href="<?php echo base_url() . 'cart/pdf?ordernumber=' . $ordernumber?>">
+                <button class="btn" id="pay-btn">PAY</button>
+            </a>
         </section>
         <?php endif;?>
     <?php else : ?>

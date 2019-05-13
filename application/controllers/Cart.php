@@ -83,20 +83,20 @@ class Cart extends CI_Controller {
         endforeach;
         $this->data['hasConfirmed'] = true;
         $this->data['ordernumber'] = $order_number;
-        $this->data['orderphone'] = $this->get_order_info()[0]["phone"];
-        $this->data['orderaddress'] = $this->get_order_info()[0]["address"];
+        $this->data['orderphone'] = $this->get_order_info($order_number)[0]["phone"];
+        $this->data['orderaddress'] = $this->get_order_info($order_number)[0]["address"];
         $this->data['ordered_dishes'] = $this->get_ordered_dishes_info();
         $this->index();
     }
 
-    public function get_order_info() {
-        $order_number = $this->data['ordernumber'];
+    public function get_order_info($order_number) {
+        // $order_number = $this->data['ordernumber'];
         $order_info = $this->db->query("SELECT * FROM orders WHERE ordernumber = $order_number")->result_array();
         return $order_info;
     }
 
     public function get_ordered_dishes_info() {
-        $order_info = $this->get_order_info();
+        $order_info = $this->get_order_info($this->data['ordernumber']);
         $dishes = [];
         foreach ($order_info as $row) :
             $did = $row["did"];
@@ -112,6 +112,10 @@ class Cart extends CI_Controller {
     * @return Response */
     public function pdf() {
         $this->load->helper('pdf_helper');
+        $this->data['ordernumber'] = $_GET['ordernumber'];
+        $this->data['orderphone'] = $this->get_order_info($this->data['ordernumber'])[0]["phone"];
+        $this->data['orderaddress'] = $this->get_order_info($this->data['ordernumber'])[0]["address"];
+        $this->data['ordered_dishes'] = $this->get_ordered_dishes_info();
         
         $this->load->view('pdf', $this->data);
     }

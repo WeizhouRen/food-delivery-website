@@ -2,7 +2,7 @@
 tcpdf();
 $obj_pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $obj_pdf->SetCreator(PDF_CREATOR);
-$title = "PDF Report";
+$title = "Order Invoice";
 $obj_pdf->SetTitle($title);
 $obj_pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, $title, PDF_HEADER_STRING);
 $obj_pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -19,7 +19,7 @@ ob_start();
 // we can have any view part here like HTML, PHP etc
 ?>
 <section id="checkout-form">
-    <h1>Summary</h2>
+    <h1>Invoice</h2>
         <p>Order Number: <?php echo $ordernumber ?></p>
         <p>Username: <?php echo $_SESSION["username"] ?></p>
         <p>Mobile: <?php echo $orderphone ?></p>
@@ -27,12 +27,11 @@ ob_start();
         <hr>
         <?php foreach ($ordered_dishes as $od) : ?>
             <div class="od">
-                <label>Dish Name: <?php echo $od["name"] . ' ---- ' . $od["price"]; ?></label><br>
+                <label>Dishes Info:</label><br>
+                <p><?php echo $od["name"] . ' ---- ' . $od["price"]; ?></p><br>
             </div>
         <?php endforeach; ?>
         <p>TOTAL: <?php echo $total ?></p>
-
-        <button class="btn" id="pay-btn">PAY</button>
 </section>
 
 <?php
