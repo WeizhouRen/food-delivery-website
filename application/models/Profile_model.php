@@ -14,9 +14,9 @@ class Profile_model extends CI_Model {
     }
     
     public function update($username, $password, $email, $phone, $address, $path) {
-        $query = "UPDATE `user` SET `password`='$password',`email`='$email',
-        `phone`=$phone,`address`='$address', `avatar`='$path' WHERE `username` = '$username'";
-        $this->db->query($query);
+        $query = "UPDATE `user` SET `password`= ?,`email`= ?,
+        `phone`= ?,`address`= ?, `avatar`= ? WHERE `username` = ?";
+        $this->db->query($query, array($password, $email, $phone, $address, $path, $username));
     }
 
 }

@@ -9,13 +9,14 @@ class Profile extends CI_Controller {
         $this->load->model('restaurants_model');
         $this->load->model('dishes_model');
         $this->load->model('users_model');
-        $this->data['info'] = $this->profile_model->get_info($_SESSION["username"]);
+        $this->data['info'] = null;
         $this->data['dishes'] = null;
     }
 
     public function index() {
         $this->data['dishes'] = $this->dishes_model->get_dishes($this->get_rid());
         $this->data['rname'] = $this->get_rname();
+        $this->data['info'] = $this->profile_model->get_info($_SESSION["username"]);
         $this->data['rid'] = $this->get_rid();
         $this->load->view('header');
         $this->load->view('profile', $this->data);
@@ -28,10 +29,14 @@ class Profile extends CI_Controller {
         $phone = $this->input->post('phone');
         $email = $this->input->post('email');
         $address = $this->input->post('address');
-        
-        $avatar_name = $username.$_FILES["avatar"]["name"];
-        $this->users_model->upload_avatar($avatar_name);
-        $new_path = base_url()."img/avatar/".basename($avatar_name);
+        if (isset($_FILES["update-avatar"]["name"])) {
+            $avatar_name = $username.$_FILES["update-avatar"]["name"];
+            $this->users_model->update_upload($avatar_name);
+            $new_path = base_url()."img/avatar/".basename($avatar_name);
+        } else {
+            $new_path = $this->users_model->get_avatar($username);
+        }
+        echo $this->data['info']['avatar'];
         $this->profile_model->update($username, $password, $email, $phone, $address, $new_path);
         redirect(base_url(). "profile/");
     }

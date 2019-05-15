@@ -56,6 +56,24 @@ class Users_model extends CI_Model {
         }
 	}
 
+	public function update_upload($avatar_name) {
+		$target_dir = $_SERVER['DOCUMENT_ROOT']."/img/avatar/";
+		$target_file = $target_dir . basename($avatar_name);
+
+        if ((($_FILES["update-avatar"]["type"] == "image/jpg")
+                || ($_FILES["update-avatar"]["type"] == "image/jpeg"))) {
+            if ($_FILES["update-avatar"]["error"] > 0) {
+                echo "Error: " . $_FILES["update-avatar"]["error"] . "<br />";
+            } else { // save the file 
+                move_uploaded_file($_FILES["update-avatar"]["tmp_name"], $target_file);
+			}
+			return true;
+        } else {
+			echo '<script>alert("successful!");</script>';
+			return false;
+        }
+	}
+
 	public function insert_user($username, $password, $email, $phone, $address, $identity, $path) {
 		
 		$insert_query = "INSERT INTO user (`username`, `password`, `email`, `phone`, `address`, `identity`, `avatar`) VALUES ('$username', '$password', '$email', $phone, '$address', '$identity', '$path')";
@@ -88,5 +106,10 @@ class Users_model extends CI_Model {
 	public function get_userid($username) {
 		$result = $this->db->query("SELECT * FROM user WHERE `username` = '$username'")->row_array();
 		return $result["userid"];
+	}
+
+	public function get_avatar($username) {
+		$result = $this->db->query("SELECT * FROM user WHERE `username` = '$username'")->row_array();
+		return $result["avatar"];
 	}
 }

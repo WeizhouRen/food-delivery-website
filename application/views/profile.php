@@ -51,7 +51,7 @@
                             <figure class="preview-avatar">
                                 <img id="update-preview" class="preview-avatar-image" width="150px" src="<?php echo $info['avatar']; ?>">
                             </figure>
-                            <input type="file" name="avatar" id="update-avatar" onchange="document.getElementById('update-preview').src = window.URL.createObjectURL(this.files[0])">
+                            <input type="file" name="update-avatar" id="update-avatar" onchange="document.getElementById('update-preview').src = window.URL.createObjectURL(this.files[0])">
                         </div>
 
                         <label for="username"><b>Username *</b></label>
