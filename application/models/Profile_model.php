@@ -6,7 +6,7 @@ class Profile_model extends CI_Model {
 	}
     
     public function get_info($username) {
-        $query = $this->db->query("SELECT * FROM user WHERE username = '" . $username . "'");
+        $query = $this->db->query("SELECT * FROM user WHERE username = ?", array($username));
         $row = $query->row_array();
         if (isset($row)) {
             return $row;

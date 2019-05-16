@@ -83,6 +83,7 @@ class Cart extends CI_Controller {
         endforeach;
         $this->data['hasConfirmed'] = true;
         $this->data['ordernumber'] = $order_number;
+        $this->data['status'] = $this->get_order_info($order_number)[0]["status"];
         $this->data['orderphone'] = $this->get_order_info($order_number)[0]["phone"];
         $this->data['orderaddress'] = $this->get_order_info($order_number)[0]["address"];
         $this->data['ordered_dishes'] = $this->get_ordered_dishes_info();
@@ -116,7 +117,7 @@ class Cart extends CI_Controller {
         $this->data['orderphone'] = $this->get_order_info($this->data['ordernumber'])[0]["phone"];
         $this->data['orderaddress'] = $this->get_order_info($this->data['ordernumber'])[0]["address"];
         $this->data['ordered_dishes'] = $this->get_ordered_dishes_info();
-        
+        $this->data['total'] = $this->total();
         $this->load->view('pdf', $this->data);
     }
 }

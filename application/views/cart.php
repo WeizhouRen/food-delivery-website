@@ -73,12 +73,12 @@
             <hr>
             <?php foreach ($ordered_dishes as $od) :?>
                 <div class="od">
-                    <label>Dish Name: <?php echo $od["name"] . ' ---- '. $od["price"];?></label><br>
+                    <p>Dish Name: <?php echo $od["name"] . ' ---- $'. $od["price"];?></p><br>
                 </div>
             <?php endforeach;?>
             <p>TOTAL: <?php echo $total?></p>
             <a href="<?php echo base_url() . 'cart/pdf?ordernumber=' . $ordernumber?>">
-                <button class="btn" id="pay-btn">PAY</button>
+                <button class="btn" id="preview-btn">Preview Invoice</button>
             </a>
         </section>
         <?php endif;?>

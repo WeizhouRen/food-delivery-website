@@ -6,14 +6,24 @@ class Users_model extends CI_Model {
 	}
     
 	public function authenticate($username, $password) {
-		// $query = $this->db->get_where("users", array('username' => $username));
-		$query = $this->db->query("SELECT * FROM user WHERE username = '" . $username . "'");
-		
+		$query = $this->db->query("SELECT * FROM user WHERE username = ?", array($username));
 		$row = $query->row_array();
 
+		$hash = $row["password"];		
+
 		if (isset($row)) {
-			return ($password == $row['password']);
+			/**
+			 * make sure the input psw can be verified by the hashed psw which stored in db
+			 * https://www.php.net/manual/en/function.password-verify.php */ 
+			if (password_verify($password, $hash)) {
+				echo '<script>alert("Login Successfully");</script>';
+				return TRUE;
+			} else {
+				echo '<script>alert("Your username or password is incorrect!");</script>';
+				return FALSE;
+			}
 		} else {
+			echo '<script>alert("You have not sign up!");</script>';
 			return FALSE;
 		}
 	}
@@ -76,9 +86,10 @@ class Users_model extends CI_Model {
 
 	public function insert_user($username, $password, $email, $phone, $address, $identity, $path) {
 		
-		$insert_query = "INSERT INTO user (`username`, `password`, `email`, `phone`, `address`, `identity`, `avatar`) VALUES ('$username', '$password', '$email', $phone, '$address', '$identity', '$path')";
-		$this->db->query($insert_query);
-		$query = $this->db->query("SELECT * FROM user WHERE username = '" . $username . "'");
+		$insert_query = "INSERT INTO user (`username`, `password`, `email`, `phone`, `address`, `identity`, `avatar`) 
+		VALUES (?,?,?,?,?,?,?)";
+		$this->db->query($insert_query, array($username, $password, $email, $phone, $address, $identity, $path));
+		$query = $this->db->query("SELECT * FROM user WHERE username = ?", array($username));
 		$row = $query->row_array();
 
 		if (isset($row)) {

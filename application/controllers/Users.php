@@ -8,6 +8,8 @@ class Users extends CI_Controller {
         $this->data['status'] = "";
         $this->data['identity'] = "";
         $this->load->model('users_model');
+        $this->load->model('restaurants_model');
+        
         // $config['image_library'] = 'gd2';
         // $config['quality'] = '60%';
         // $this->load->library('img_lib', $config);
@@ -15,7 +17,8 @@ class Users extends CI_Controller {
 
     public function index() {
         $this->load->view('header');
-        $this->load->view('home');
+        $this->data['popular'] = $this->restaurants_model->most_popular();
+        $this->load->view('home', $this->data);
         $this->load->view('footer');
     }
 
@@ -38,10 +41,10 @@ class Users extends CI_Controller {
             } else {
                 $this->data["identity"] = 'customer';
             }
-            redirect(base_url(). "home/");
-        } else {
-            echo '<script>alert("Your username or password is incorrect!");</script>';
             $this->index();
+        } else {
+            $this->index();
+            // redirect(base_url() . "home/");
         }
     }
 
@@ -54,12 +57,17 @@ class Users extends CI_Controller {
     public function signup() {
         $username = $this->input->post('username');
         $password = $this->input->post('psw');
+        
         $phone = $this->input->post('phone');
         $email = $this->input->post("email");
         $identity = $this->input->post("identity");
         $address = $this->input->post("address");
         $avatar_name = $username.$_FILES["avatar"]["name"]; 
-        
+
+        /**
+         * https://www.php.net/manual/en/function.password-hash.php
+         */
+        $password = password_hash($password, PASSWORD_DEFAULT);
         if ($this->users_model->unique_name($username) 
             && $this->users_model->unique_email($email)) {
 
@@ -76,7 +84,7 @@ class Users extends CI_Controller {
                     $this->index();
             }
         } else {
-            $this->index();
+            redirect(base_url() . "home/");
         }
     }
 
