@@ -27,7 +27,6 @@ class Cart extends CI_Controller {
             $this->data['user'] = $user;
         }
         $this->load->view('header');
-            
         $this->load->view('cart', $this->data);
         
         $this->load->view('footer');
@@ -77,8 +76,8 @@ class Cart extends CI_Controller {
         $order_number = mt_rand();
         foreach ($dishes as $dish) :
             $did = $dish["did"];
-            $sql = "INSERT INTO `orders`(`userid`, `did`, `phone`, `address`, `ordernumber`) 
-        VALUES ($userid, $did, $phone, '$address', $order_number);";
+            $sql = "INSERT INTO `orders`(`userid`, `did`, `phone`, `address`, `ordernumber`, `status`) 
+        VALUES ($userid, $did, $phone, '$address', $order_number, 'confirmed');";
             $this->db->query($sql);
         endforeach;
         $this->data['hasConfirmed'] = true;

@@ -12,11 +12,13 @@ ini_set('display_errors', 'On');
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/animate.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="">
     <!-- *** SCRIPTS TO INCLUDE ***-->
     <script src="<?php echo base_url(); ?>js/angular/angular.min.js"></script>
     <script src="<?php echo base_url(); ?>js/jquery-3.3.1.min.js"></script>
     <script src="<?php echo base_url(); ?>js/scrollClass.js"></script>
     <script src="<?php echo base_url(); ?>js/javascript.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -67,7 +69,9 @@ ini_set('display_errors', 'On');
             </form>
         </div>
         <div class="popup-form" id="signup-form">
+            
             <form ng-app action="<?php echo base_url(); ?>users/signup" method="POST" class="form-container" id="signup-form-container" name="signup" novalidate enctype="multipart/form-data">
+                
                 <div id="signup-left" class="signup-div">
                     <h1>Create a New Account</h1>
                     <div>
@@ -119,7 +123,7 @@ ini_set('display_errors', 'On');
                     <input type="text" placeholder="Enter Address" name="address" ng-required="true" ng-model="user.address" required>
                     <p class="form-error" ng-show="signup.address.$invalid && signup.address.$touched">
                         Please input your address.</p>
-
+                    <div class="g-recaptcha" data-sitekey="6Lc44aMUAAAAAECVNd6g325osPqN_TzBb_fll6RT" style="margin: auto"></div>
                     <button type="submit" class="btn" ng-disabled="signup.$invalid">Signup</button>
                     <button type="button" class="btn" onclick="closeSignupForm()">Close</button>
                 </div>

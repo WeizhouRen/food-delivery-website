@@ -64,27 +64,47 @@ class Users extends CI_Controller {
         $address = $this->input->post("address");
         $avatar_name = $username.$_FILES["avatar"]["name"]; 
 
+        if(isset($_POST['g-recaptcha-response'])) {
+            $captcha=$_POST['g-recaptcha-response'];
+        }
         /**
-         * https://www.php.net/manual/en/function.password-hash.php
+         * Source of the tutorial of verify recaptcha
+         * https://codeforgeek.com/google-recaptcha-tutorial/
          */
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        if ($this->users_model->unique_name($username) 
-            && $this->users_model->unique_email($email)) {
+        $secretKey = "6Lc44aMUAAAAAOXscOTpy2zFYTHJNil6MOGoKim_";
+        $ip = $_SERVER['REMOTE_ADDR'];
+        // post request to server
+        $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
+        $response = file_get_contents($url);
+        $responseKeys = json_decode($response,true);
+        // should return JSON with success as true
+        if($responseKeys["success"]) {
+            /**
+             * source of tutorial hashing the password
+             * https://www.php.net/manual/en/function.password-hash.php
+             */
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            if ($this->users_model->unique_name($username) 
+                && $this->users_model->unique_email($email)) {
 
-            if ($this->users_model->upload_avatar($avatar_name)) {
-                $path = base_url().'img/avatar/'.$avatar_name;
+                if ($this->users_model->upload_avatar($avatar_name)) {
+                    $path = base_url().'img/avatar/'.$avatar_name;
+                } else {
+                    $path = base_url().'img/avatar.jpg';
+                }
+
+                
+                if($this->users_model->insert_user($username, $password, 
+                    $email, $phone, $address, $identity, $path)) {
+                        $_SESSION["username"] = $username;
+                        $this->index();
+                }
             } else {
-                $path = base_url().'img/avatar.jpg';
-            }
-
-            
-            if($this->users_model->insert_user($username, $password, 
-                $email, $phone, $address, $identity, $path)) {
-                    $_SESSION["username"] = $username;
-                    $this->index();
+                redirect(base_url() . "home/");
             }
         } else {
-            redirect(base_url() . "home/");
+            echo '<script>alert("Are you a robot?");</script>';
+            $this->index();
         }
     }
 
@@ -102,5 +122,25 @@ class Users extends CI_Controller {
         } else {
             echo "<div class='status-not-available'> Email Not Available.</div>";
         }
+    }
+
+    public function send_email() {
+        $config = array (
+          'protocol' => 'smtp',
+          'smtp_host' => 'mailhub.eait.uq.edu.au',
+          'smtp_port' => 25,
+          'smtp_crypto' => 'tls',
+          'mailtype' => 'html',
+          'validate' => FALSE,
+          'charset' => 'utf-8',
+          'wordwrap' => TRUE,
+          'newline' => '\r\n'  
+        );
+        $this->load->library("email", $config);
+        $this->email->from('weizhou.ren@uqconnect.edu.au', 'Lets EAT');
+        $this->email->to($email);
+        $this->email->subject($subject);
+        $this->email->message($message);
+        $this->email->send();
     }
 }
