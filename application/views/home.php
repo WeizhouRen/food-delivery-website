@@ -2,7 +2,7 @@
         <!-- *** BACKGROUND *** -->
         <section id="fixed-background">
             <div id="order-now">
-                <label>To Discover Your Food</label>
+                <a href="<?php echo base_url()?>/restaurants"><label>To Discover Your Food</label></a>
             </div>
         </section>
         <!-- *** RECOMMONDATION *** -->

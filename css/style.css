@@ -387,7 +387,9 @@ input.ng-valid.ng-touched {
 	cursor: pointer;
 	transition: 0.5s;
 }
-
+#order-now a {
+	text-decoration: none;
+}
 /* RECOMMONDATION */
 #recommondation {
 	width: 80%;
