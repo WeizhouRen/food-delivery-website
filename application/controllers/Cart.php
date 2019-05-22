@@ -65,6 +65,11 @@ class Cart extends CI_Controller {
         return $qty;
     }
 
+    /**
+     * Once confirmed, the records will be deleted from cart table
+     * and saved in order table
+     * cart will be empty, and will not be displayed
+     */
     public function checkout () {
         $address = $_POST["address"];
         $phone = $_POST["phone"];
@@ -80,6 +85,8 @@ class Cart extends CI_Controller {
         VALUES ($userid, $did, $phone, '$address', $order_number, 'confirmed');";
             $this->db->query($sql);
         endforeach;
+        $delete = "DELETE FROM cart WHERE userid = $userid";
+        $this->db->query($delete);
         $this->data['hasConfirmed'] = true;
         $this->data['ordernumber'] = $order_number;
         $this->data['status'] = $this->get_order_info($order_number)[0]["status"];
@@ -118,5 +125,9 @@ class Cart extends CI_Controller {
         $this->data['ordered_dishes'] = $this->get_ordered_dishes_info();
         $this->data['total'] = $this->total();
         $this->load->view('pdf', $this->data);
+    }
+
+    public function status() {
+
     }
 }
