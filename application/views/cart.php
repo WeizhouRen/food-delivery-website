@@ -45,11 +45,11 @@
                     <div id="total-price">
                         <section class="checkout-ele">
                             <h3>Delivery Address:</h3>
-                            <input class="checkout-info" name="address" value="<?php echo $user['address']; ?>" type="text" <?php if ($hasConfirmed || $dishes == null): echo 'disabled'; endif;?>>
+                            <input class="checkout-info" name="address" value="<?php echo $user['address']; ?>" type="text" <?php if ($hasConfirmed || $dishes == null): echo 'disabled'; endif;?> required>
                         </section>
                         <section class="checkout-ele">
                             <h3>Phone:</h3>
-                            <input class="checkout-info" name="phone" value="<?php echo $user['phone']; ?>" type="number" <?php if ($hasConfirmed || $dishes == null): echo 'disabled'; endif;?>>
+                            <input class="checkout-info" name="phone" value="<?php echo $user['phone']; ?>" type="number" <?php if ($hasConfirmed || $dishes == null): echo 'disabled'; endif;?> required>
                         </section>
                         <section class="checkout-ele">
                             <p id="total">TOTAL: $<?php echo $total; ?></p>

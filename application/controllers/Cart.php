@@ -8,6 +8,7 @@ class Cart extends CI_Controller {
         $this->load->model('cart_model');
         $this->load->model('users_model');
         $this->load->model('dishes_model');
+        $this->load->model('order_model');
         $this->data["dishes"] = null;
         $this->data['total'] = 0;
         $this->data['user'] = null;
@@ -123,7 +124,10 @@ class Cart extends CI_Controller {
         $this->data['orderphone'] = $this->get_order_info($this->data['ordernumber'])[0]["phone"];
         $this->data['orderaddress'] = $this->get_order_info($this->data['ordernumber'])[0]["address"];
         $this->data['ordered_dishes'] = $this->get_ordered_dishes_info();
-        $this->data['total'] = $this->total();
+        $this->data['total'] = 0;
+        foreach ($this->data['ordered_dishes'] as $dish):
+            $this->data['total'] = $this->data['total'] + $dish["price"];
+        endforeach;
         $this->load->view('pdf', $this->data);
     }
 

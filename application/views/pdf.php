@@ -28,10 +28,10 @@ ob_start();
         <?php foreach ($ordered_dishes as $od) : ?>
             <div class="od">
                 <label>Dishes Info:</label><br>
-                <p><?php echo $od["name"] . ' ---- ' . $od["price"]; ?></p><br>
+                <p><?php echo $od["name"] . ' ---- $' . $od["price"]; ?></p><br>
             </div>
         <?php endforeach; ?>
-        <p>TOTAL: <?php echo $total ?></p>
+        <p>TOTAL: $<?php echo $total ?></p>
 </section>
 
 <?php

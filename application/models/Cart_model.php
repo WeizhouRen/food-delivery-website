@@ -70,3 +70,5 @@ class Cart_model extends CI_Model {
         return $qty;
     }
 }
+
+?>

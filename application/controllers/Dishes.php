@@ -24,6 +24,24 @@ class Dishes extends CI_Controller {
         $this->load->view('footer');
     }
 
+    public function add_comment() {
+        $username = $_SESSION["username"];
+        $userid = $this->users_model->get_userid($username);
+        $text = $_POST["comment"];
+        $rate = $_POST["rate"];
+        $rid = $_POST["rid"];
+        $date = $this->db->query("SELECT CURRENT_TIMESTAMP() as `dtime`;")->row()->dtime;
+        print_r($date);
+        $sql = "INSERT INTO `comments`(`username`, `userid`, `text`, `rate`,`date`,`rid`) 
+        VALUES ('$username', $userid, '$text', $rate, '$date', $rid)";
+        $this->db->query($sql);
+        redirect(base_url(). "dishes/index?rid=".$rid);
+    }
+
+    /**
+     * Add dishes in your restaurant
+     * if the identity is staff
+     */
     public function add() {
         $name = $_POST["dish-name"];
         $price = $_POST["dish-price"];
@@ -55,22 +73,10 @@ class Dishes extends CI_Controller {
         redirect(base_url(). "profile/");
     }
 
-    public function add_comment() {
-        $username = $_SESSION["username"];
-        $userid = $this->users_model->get_userid($username);
-        $text = $_POST["comment"];
-        $rate = $_POST["rate"];
-        $rid = $_POST["rid"];
-        $date = $this->db->query("SELECT CURRENT_TIMESTAMP() as `dtime`;")->row()->dtime;
-        print_r($date);
-        $sql = "INSERT INTO `comments`(`username`, `userid`, `text`, `rate`,`date`,`rid`) 
-        VALUES ('$username', $userid, '$text', $rate, '$date', $rid)";
-        $this->db->query($sql);
-        redirect(base_url(). "dishes/index?rid=".$rid);
-    }
-
-
-
+    /**
+     * Update dishes in your restaurant
+     * if the identity is staff
+     */
     public function update() {
         $did = $this->input->post('dish-id');
         $name = $this->input->post('dish-name');
@@ -81,6 +87,10 @@ class Dishes extends CI_Controller {
         redirect(base_url(). "profile/");
     }
 
+    /**
+     * Delete dishes in your restaurant
+     * if the identity is staff
+     */
     public function delete() {
         $did = $_GET["did"];
         $sql = "DELETE FROM dishes WHERE did = $did;";
