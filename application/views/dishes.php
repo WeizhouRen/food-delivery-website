@@ -1,4 +1,10 @@
 <main>
+    <script type="text/javascript">
+        function getScrollY() {
+            var y = document.getElementsByID("add-comment-form").scrollTop;
+            window.location.href = window.location.href.split('?')[0] + '?page_y=' + page_y;
+        }
+    </script>
     <!-- *** BACKGROUND *** -->
     <section id="restaurant-page-bg">
         <div class="restaurant-detail">
@@ -58,7 +64,7 @@
         </script>
 
         <!-- *** COMMENTS *** -->
-        <div class="container">
+        <div id= "comments-container" class="container">
             <?php foreach ($comment as $com) : ?>
                 <div class="dish-comment">
                     <div class="comment-user">
@@ -68,7 +74,7 @@
                         <h3><?php echo $com["username"]; ?></h3>
                     </div>
 
-                    <div class="display-rating" data-rating="<?php echo $com['rate']?>">
+                    <div class="display-rating" data-rating="<?php echo $com['rate'] ?>">
                         <?php
                         $score = $com["rate"];
                         for ($i = 0; $i < 5; $i++) {
@@ -88,18 +94,18 @@
                         }
                         ?>
                     </div>
-                    
+
                     <p class="com-text">"<?php echo $com["text"]; ?>"</p>
                     <p class="com-date">Created <?php echo $com["date"]; ?></p>
                     <hr>
                 </div>
             <?php endforeach; ?>
-            <form class="add-comment" method="POST" action="<?php echo base_url() . 'dishes/add_comment' ?>">
+            <form id="add-comment-form" class="add-comment" method="POST" action="<?php echo base_url() . 'dishes/add_comment' ?>">
 
                 <div class="comment-option">
                     <h1>Rate the restaurant</h1>
                     <fieldset class="rating">
-                        <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                        <input type="radio" id="star5" name="rating" value="5" checked /><label class="full" for="star5" title="Awesome - 5 stars"></label>
                         <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
                         <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
                         <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
@@ -114,7 +120,7 @@
 
                 <div class="comment-option">
                     <h1>Leave your comment: </h1>
-                    <input id="comment" class="comment" name="comment" type="text" require>
+                    <input id="comment" class="comment" name="comment" type="text" required>
                 </div>
 
                 <input id="rid" class="rid" name="rid" type="hidden" value="<?php echo $info["rid"]; ?>">

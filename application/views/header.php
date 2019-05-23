@@ -43,7 +43,7 @@ ini_set('display_errors', 'On');
                 ?>
             </div>
             <form id="search-container" action="">
-                <input type="text" name="search" id="search" placeholder="Search you the restaurant you want..." onkeyup="showResult(this.value)"/>
+                <input type="text" name="search" id="search" placeholder="Search you the restaurant you want..." onkeyup="showResult(this.value)" />
                 <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
                 <div id="livesearch"></div>
             </form>
@@ -69,9 +69,9 @@ ini_set('display_errors', 'On');
             </form>
         </div>
         <div class="popup-form" id="signup-form">
-            
+
             <form ng-app action="<?php echo base_url(); ?>users/signup" method="POST" class="form-container" id="signup-form-container" name="signup" novalidate enctype="multipart/form-data">
-                
+
                 <div id="signup-left" class="signup-div">
                     <h1>Create a New Account</h1>
                     <div>
@@ -144,7 +144,7 @@ ini_set('display_errors', 'On');
                 <a href="<?php echo base_url() . 'restaurants/' ?>">Restaurants</a>
             </li>
             <li>
-                <a href="<?php echo base_url() . 'cart/'?>">Order Online</a>
+                <a href="<?php echo base_url() . 'cart/' ?>">Order Online</a>
             </li>
             <!-- <li>
                 <a>Contact Us</a>

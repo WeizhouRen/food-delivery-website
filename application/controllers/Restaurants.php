@@ -55,7 +55,7 @@ class Restaurants extends CI_Controller {
         $dbpassword = 'panweibo8635';
         $db = 'INFS3202';
         $conn = new mysqli($dbhost, $dbuser, $dbpassword, $db);
-
+        
         $rname = $_GET['rname'];
         
         $like = '%' . strtolower($rname) . '%';
@@ -82,3 +82,4 @@ class Restaurants extends CI_Controller {
         }
     }
 }
+?>
