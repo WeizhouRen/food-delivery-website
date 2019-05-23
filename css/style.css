@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Caveat|Poiret+One|Thasadith');
 
+
 * {
 	margin: 0;
 	padding: 0;
@@ -137,7 +138,8 @@ header {
 .form-container input[type=password],
 .form-container input[type=email],
 .form-container input[type=number],
-.checkout-info, .comment{
+.checkout-info,
+.comment {
 	box-sizing: border-box;
 	width: 100%;
 	padding: 15px;
@@ -387,9 +389,11 @@ input.ng-valid.ng-touched {
 	cursor: pointer;
 	transition: 0.5s;
 }
+
 #order-now a {
 	text-decoration: none;
 }
+
 /* RECOMMONDATION */
 #recommondation {
 	width: 80%;
@@ -419,21 +423,26 @@ input.ng-valid.ng-touched {
 .recom-pic img {
 	width: 30rem;
 }
+
 .recom-pic a {
 	text-decoration: none;
 	color: lightslategray;
 }
+
 .recom-desc {
 	width: 50%;
 	font-family: 'Thasadith', sans-serif;
 }
+
 .recom-desc p {
 	font-size: 20px;
 }
+
 #recom-rname {
 	font-size: 25px;
 	font-weight: bolder;
 }
+
 /* FOOTER */
 footer {
 	background: #A97D5D;
@@ -744,6 +753,29 @@ footer {
 	height: 150px;
 }
 
+
+#checkout-form {
+	width: 80%;
+	margin: auto;
+	border: 3px solid #587058;
+	border-radius: 3px;
+	padding: 2em;
+	margin-bottom: 3em;
+}
+
+#checkout-form p {
+	margin-top: 2em;
+}
+
+#checkout-form hr {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+#preview-btn {
+	margin-top: 2em;
+}
+
 .update-block {
 	display: flex;
 }
@@ -812,46 +844,47 @@ table#dishes-table th {
 }
 
 #profile-table {
-    width: 80%;
+	width: 80%;
 	margin: 2em auto;
 }
 
 .operation-buttons {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .update-btn {
-    background-color: #587058;
+	background-color: #587058;
 }
 
 .delete-btn {
-    background-color: #da3637;
+	background-color: #da3637;
 }
 
 .profile-dish {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 5px;
-    background-color: white;
-    border: 1px solid #587058;
-    font-size: 16px;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 5px;
+	background-color: white;
+	border: 1px solid #587058;
+	font-size: 16px;
 }
 
 #add-dish {
-    margin: 2em auto;
+	margin: 2em auto;
 }
 
 .add-ele {
-    margin: 1em 0;
-    display: block;
+	margin: 1em 0;
+	display: block;
 }
 
 #add-c1 {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
+/* DISHES PAGE */
 #map {
 	width: 80%;
 	height: 400px;
@@ -863,7 +896,9 @@ table#dishes-table th {
 	width: 80%;
 	margin: 1em auto;
 }
-
+.dish-comment {
+	display: block;
+}
 .dish-comment h3 {
 	margin: 1em 0;
 }
@@ -876,9 +911,23 @@ table#dishes-table th {
 	margin: 2em 0;
 	display: block;
 }
+
 .comment-option {
 	display: block;
 	padding: 1em 0;
+}
+.comment-user {
+	display: flex;
+	margin-top: 1em;
+	margin-right: 1em;
+}
+.small-avatar {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: 2px solid #587058;
+	margin-right: 1em;
+	overflow: hidden;
 }
 .com-text {
 	padding-left: 3em;
@@ -887,24 +936,95 @@ table#dishes-table th {
 .com-date {
 	color: lightgrey;
 }
-
-#checkout-form {
-	width: 80%;
-	margin: auto;
-	border: 3px solid #587058;
-	border-radius: 3px;
-	padding: 2em;
-	margin-bottom: 3em;
+.submit-comment {
+	width: 100px;
 }
-#checkout-form p {
-	margin-top: 2em; 
-}
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
-#checkout-form hr {
-	margin-top: 1em;
-	margin-bottom: 1em;
+/* source url: https://codepen.io/jamesbarnett/pen/vlpkh */
+fieldset,
+label {
+	margin: 0;
+	padding: 0;
 }
 
-#preview-btn {
-	margin-top: 2em;
+.comment-option h1 {
+	font-size: 1.5em;
+	margin: 10px;
+}
+
+/****** Style Star Rating Widget  *****/
+.rating, .display-rating {
+	border: none;
+}
+.rating {
+	float: left;
+}
+.rating>input,
+.display-rating>input {
+	display: none;
+}
+
+.rating>label:before,
+.display-rating>.display-full:before {
+	margin: 5px;
+	font-size: 1.25em;
+	font-family: FontAwesome;
+	display: inline-block;
+	content: "\f005";
+}
+
+.rating>.half:before {
+	content: "\f089";
+	position: absolute;
+}
+.display-rating>.display-half:before {
+	margin: 5px;
+	font-size: 1.25em;
+	font-family: FontAwesome;
+	display: inline-block;
+	content: "\f089";
+}
+.display-rating>.display-base:before {
+	margin: 5px;
+	font-size: 1.25em;
+	font-family: FontAwesome;
+	display: inline-block;
+	content: "\f005";
+}
+.display-rating>.display-base {
+	color: #ddd;
+}
+.display-rating>.display-half,
+.display-rating>.display-full {
+	color: #FFD700;
+	position: absolute;
+}
+.rating>label {
+	color: #ddd;
+	float: right;
+}
+/* .display-rating> {
+	color: #FFD700;
+	float: right;
+} */
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating>input:checked~label,
+/* show gold star when clicked */
+.rating:not(:checked)>label:hover,
+/* hover current star */
+.rating:not(:checked)>label:hover~label {
+	color: #FFD700;
+}
+
+/* hover previous stars in list */
+
+.rating>input:checked+label:hover,
+/* hover current star when changing rating */
+.rating>input:checked~label:hover,
+.rating>label:hover~input:checked~label,
+/* lighten current selection */
+.rating>input:checked~label:hover~label {
+	color: #FFED85;
 }

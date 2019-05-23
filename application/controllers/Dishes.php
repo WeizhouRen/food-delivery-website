@@ -28,9 +28,10 @@ class Dishes extends CI_Controller {
         $username = $_SESSION["username"];
         $userid = $this->users_model->get_userid($username);
         $text = $_POST["comment"];
-        $rate = $_POST["rate"];
+        $rate = $_POST["rating"];
         $rid = $_POST["rid"];
-        $date = $this->db->query("SELECT CURRENT_TIMESTAMP() as `dtime`;")->row()->dtime;
+        // $date = $this->db->query("SELECT CURRENT_TIMESTAMP() as `dtime`;")->row()->dtime;
+        $date = date("Y-m-d", time());
         print_r($date);
         $sql = "INSERT INTO `comments`(`username`, `userid`, `text`, `rate`,`date`,`rid`) 
         VALUES ('$username', $userid, '$text', $rate, '$date', $rid)";

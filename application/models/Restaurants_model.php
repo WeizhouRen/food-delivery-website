@@ -18,7 +18,7 @@ class Restaurants_model extends CI_Model {
     }
 
     public function get_comment($rid) {
-        $comment = $this->db->query("SELECT * FROM comments WHERE rid = '$rid'")->result_array();
+        $comment = $this->db->query("SELECT `text`, `date`, comments.`username`, `avatar`, `rate` FROM comments, user WHERE rid = '$rid' AND user.`username` = comments.`username`")->result_array();
         return $comment;
     }
     

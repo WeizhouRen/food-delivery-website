@@ -143,4 +143,8 @@ class Users extends CI_Controller {
         $this->email->message($message);
         $this->email->send();
     }
+
+    public function avatar($username) {
+        return $this->users_model->get_avatar($username);
+    }
 }
