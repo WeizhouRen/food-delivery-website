@@ -18,8 +18,8 @@ class Restaurants extends CI_Controller {
     public function get_category() {
         $dbhost = 'localhost';
         $dbuser = 'root';
-        $dbpassword = 'panweibo8635';
-        $db = 'INFS3202';
+        $dbpassword = '';
+        $db = 'FoodDelivery';
         $conn = new mysqli($dbhost, $dbuser, $dbpassword, $db);
         
         if ($_GET['q'] == '?') {
@@ -52,8 +52,8 @@ class Restaurants extends CI_Controller {
     public function get_search() {
         $dbhost = 'localhost';
         $dbuser = 'root';
-        $dbpassword = 'panweibo8635';
-        $db = 'INFS3202';
+        $dbpassword = '';
+        $db = 'FoodDelivery';
         $conn = new mysqli($dbhost, $dbuser, $dbpassword, $db);
         
         $rname = $_GET['rname'];

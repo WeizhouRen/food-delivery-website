@@ -1,34 +1,34 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Users extends CI_Controller {
-    
-    public function __construct() {
+class Users extends CI_Controller
+{
+
+    public function __construct()
+    {
         parent::__construct();
         $this->data['status'] = "";
         $this->data['identity'] = "";
         $this->load->model('users_model');
         $this->load->model('restaurants_model');
-        
-        // $config['image_library'] = 'gd2';
-        // $config['quality'] = '60%';
-        // $this->load->library('img_lib', $config);
     }
 
-    public function index() {
+    public function index()
+    {
         $this->load->view('header');
         $this->data['popular'] = $this->restaurants_model->most_popular();
         $this->load->view('home', $this->data);
         $this->load->view('footer');
     }
 
-    public function login() {
+    public function login()
+    {
         $username = $this->input->post('username');
         $password = $this->input->post('psw');
         $remember = $this->input->post('remember');
 
         if ($remember) {
-            setcookie("username", $_POST["username"], time() + 60*60*24, "/");            
+            setcookie("username", $_POST["username"], time() + 60 * 60 * 24, "/");
         } else {
             delete_cookie('username');
         }
@@ -48,24 +48,26 @@ class Users extends CI_Controller {
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         session_destroy();
         // delete_cookie();
         redirect(base_url() . "home/");
     }
-    
-    public function signup() {
+
+    public function signup()
+    {
         $username = $this->input->post('username');
         $password = $this->input->post('psw');
-        
+
         $phone = $this->input->post('phone');
         $email = $this->input->post("email");
         $identity = $this->input->post("identity");
         $address = $this->input->post("address");
-        $avatar_name = $username.$_FILES["avatar"]["name"]; 
+        $avatar_name = $username . $_FILES["avatar"]["name"];
 
-        if(isset($_POST['g-recaptcha-response'])) {
-            $captcha=$_POST['g-recaptcha-response'];
+        if (isset($_POST['g-recaptcha-response'])) {
+            $captcha = $_POST['g-recaptcha-response'];
         }
         /**
          * Source of the tutorial of verify recaptcha
@@ -76,28 +78,40 @@ class Users extends CI_Controller {
         // post request to server
         $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
         $response = file_get_contents($url);
-        $responseKeys = json_decode($response,true);
+        $responseKeys = json_decode($response, true);
         // should return JSON with success as true
-        if($responseKeys["success"]) {
+        /**
+         * reCaptcah removed due to server changed to localhost
+         */
+        // if($responseKeys["success"]) {
+        if (true) {
             /**
              * source of tutorial hashing the password
              * https://www.php.net/manual/en/function.password-hash.php
              */
             $password = password_hash($password, PASSWORD_DEFAULT);
-            if ($this->users_model->unique_name($username) 
-                && $this->users_model->unique_email($email)) {
+            if (
+                $this->users_model->unique_name($username)
+                && $this->users_model->unique_email($email)
+            ) {
 
                 if ($this->users_model->upload_avatar($avatar_name)) {
-                    $path = base_url().'img/avatar/'.$avatar_name;
+                    $path = base_url() . 'img/avatar/' . $avatar_name;
                 } else {
-                    $path = base_url().'img/avatar.jpg';
+                    $path = base_url() . 'img/avatar/default.jpg';
                 }
 
-                
-                if($this->users_model->insert_user($username, $password, 
-                    $email, $phone, $address, $identity, $path)) {
-                        $_SESSION["username"] = $username;
-                        $this->index();
+                if ($this->users_model->insert_user(
+                    $username,
+                    $password,
+                    $email,
+                    $phone,
+                    $address,
+                    $identity,
+                    $path
+                )) {
+                    $_SESSION["username"] = $username;
+                    $this->index();
                 }
             } else {
                 redirect(base_url() . "home/");
@@ -108,7 +122,8 @@ class Users extends CI_Controller {
         }
     }
 
-    public function jQuery_Ajax_username() {
+    public function jQuery_Ajax_username()
+    {
         if (!empty($_POST["username"]) && $this->users_model->unique_name($_POST["username"])) {
             echo "<div class='status-available'> Username Available.</div>";
         } else {
@@ -116,7 +131,8 @@ class Users extends CI_Controller {
         }
     }
 
-    public function jQuery_Ajax_email() {
+    public function jQuery_Ajax_email()
+    {
         if (!empty($_POST["email"]) && $this->users_model->unique_email($_POST["email"])) {
             echo "<div class='status-available'> Email Available.</div>";
         } else {
@@ -124,17 +140,18 @@ class Users extends CI_Controller {
         }
     }
 
-    public function send_email() {
-        $config = array (
-          'protocol' => 'smtp',
-          'smtp_host' => 'mailhub.eait.uq.edu.au',
-          'smtp_port' => 25,
-          'smtp_crypto' => 'tls',
-          'mailtype' => 'html',
-          'validate' => FALSE,
-          'charset' => 'utf-8',
-          'wordwrap' => TRUE,
-          'newline' => '\r\n'  
+    public function send_email($email, $subject, $message)
+    {
+        $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'mailhub.eait.uq.edu.au',
+            'smtp_port' => 25,
+            'smtp_crypto' => 'tls',
+            'mailtype' => 'html',
+            'validate' => FALSE,
+            'charset' => 'utf-8',
+            'wordwrap' => TRUE,
+            'newline' => '\r\n'
         );
         $this->load->library("email", $config);
         $this->email->from('weizhou.ren@uqconnect.edu.au', 'Lets EAT');
@@ -144,7 +161,8 @@ class Users extends CI_Controller {
         $this->email->send();
     }
 
-    public function avatar($username) {
+    public function avatar($username)
+    {
         return $this->users_model->get_avatar($username);
     }
 }

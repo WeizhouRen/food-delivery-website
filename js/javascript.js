@@ -5,7 +5,8 @@ $(document).ready(function () {
 		$("#checkout-form").slideDown("slow");
 	});
 });
-var $base_url = 'https://infs3202-0f70f4d3.uqcloud.net/';
+// var $base_url = 'https://infs3202-0f70f4d3.uqcloud.net/';
+var $base_url = 'http://localhost/';
 
 function checkUsernameAvailability() {
 	jQuery.ajax({
@@ -114,8 +115,3 @@ function showResult(str) {
 		document.getElementById("livesearch").style.border = "none";
 	}
 }
-
-// function showSummary() {
-// 	var element = document.getElementById("checkout-form");
-//   	element.classList.show("checkout-form");
-// }

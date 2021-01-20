@@ -1,7 +1,7 @@
     <main id="profile-container">
         <?php if (isset($_SESSION["username"])) : ?>
             <div id="profile-username">
-                <h1><?php echo 'Welcom ' . $info["identity"] . ' ' . $_SESSION["username"] ?></h1>';
+                <h1><?php echo 'Welcome ' . $info["identity"] . ' ' . $_SESSION["username"] ?></h1>';
             </div>
             <div id="profile-userinfo">
 

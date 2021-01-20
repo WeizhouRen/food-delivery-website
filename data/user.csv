@@ -1,0 +1,10 @@
+﻿userid,username,password,email,phone,address,identity,avatar
+1,Amy,dummypassword,dummy@gmail.com,1234567890,St Lucia QLD 4072,customer,http://localhost/img/avatar/default.jpg
+2,Alice,dummypassword,dummy@gmail.com,1234567890,St Lucia QLD 4073,customer,http://localhost/img/avatar/default.jpg
+3,Bob,dummypassword,dummy@gmail.com,1234567890,St Lucia QLD 4074,customer,http://localhost/img/avatar/default.jpg
+4,Cindy,dummypassword,dummy@gmail.com,1234567890,St Lucia QLD 4075,customer,http://localhost/img/avatar/default.jpg
+5,David,dummypassword,dummy@gmail.com,1234567890,St Lucia QLD 4076,customer,http://localhost/img/avatar/default.jpg
+6,Edward,dummypassword,dummy@gmail.com,1234567890,St Lucia QLD 4077,starff,http://localhost/img/avatar/default.jpg
+7,Fold,dummypassword,dummy@gmail.com,1234567890,St Lucia QLD 4078,starff,http://localhost/img/avatar/default.jpg
+8,Gin,dummypassword,dummy@gmail.com,1234567890,St Lucia QLD 4079,starff,http://localhost/img/avatar/default.jpg
+9,Henry,dummypassword,dummy@gmail.com,1234567890,St Lucia QLD 4080,starff,http://localhost/img/avatar/default.jpg

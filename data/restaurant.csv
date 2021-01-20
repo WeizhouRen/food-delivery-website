@@ -1,0 +1,13 @@
+﻿rid,rcover,rname,suburb,managerid,raddress,category,rphone
+1,http://localhost/img/restaurant/bamboobasket.jpg,Bamboo Basket,South Bank,6,"Shop 1003 – 1004, 199 Grey St, South Brisbane, Qld, 4101",Chinese,(07) 3844 0088
+2,http://localhost/img/restaurant/gabbabbq.jpg,Gabba BBQ,Woolloongabba,7,"10A/803 Stanley St, Woolloongabba QLD 4102",Fast Food,(07) 3076 8630
+3,http://localhost/img/restaurant/grill'd.png,Grill D,Toowong,8,"Toowong Village, Shop G44/9 Sherwood Rd, Toowong QLD 4066",Healthy,(07) 3371 0333
+4,http://localhost/img/restaurant/guzmanygomez.jpg,Guzman y Gomez,St Lucia,9,"Level 4 Building 21, St Lucia QLD 4067",Fast Food,(07) 3188 1725
+5,http://localhost/img/restaurant/leelathai.jpg,Leela Thai,Woolloongabba,6,"5a/14 Annerley Rd, Woolloongabba QLD 4102",Healthy,(07) 3217 4388
+6,http://localhost/img/restaurant/macdonald.jpg,MacDonald,Brisbane City,7,"130 Queen St, Brisbane City QLD 4000",Fast Food,(07) 3012 8587
+7,http://localhost/img/restaurant/subway.jpg,Subway,Brisbane City,8,"shop 1/120 Edward St, Brisbane City QLD 4000",Fast Food,(07) 3211 7481
+8,http://localhost/img/restaurant/suki.jpg,SUKI - Poke' Bowls,South Brisbane,9,"182 Grey St, South Brisbane QLD 4101",Healthy,0422 858 614
+9,http://localhost/img/restaurant/trang.jpg,Trang Restaurant,West End,6,"2/59 Hardgrave Rd, West End QLD 4101",Chinese,(07) 3255 1610
+10,http://localhost/img/restaurant/phatelephant.jpg,Phat Elephant,Brisbane City,7,"Post Office Square, shop 7/215 Adelaide St, Brisbane City QLD 4000",Healthy,(07) 3236 4454
+11,http://localhost/img/restaurant/blackfire.png,Black Fire Restaurant,Brisbane City,8,"74 Albert St, Brisbane City QLD 4000",Healthy,(07) 3013 0058
+12,http://localhost/img/restaurant/fatnoodle.png,Fat Noodle,Brisbane City,9,"1, Treasury Casino, George St & Queen St, Brisbane City QLD 4000",Chinese,(07) 3306 8888

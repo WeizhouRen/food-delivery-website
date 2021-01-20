@@ -526,7 +526,7 @@ footer {
 /* RESTAURANT PAGE */
 #restaurant-page-bg {
 	width: 100%;
-	background-image: url("../img/indexbg.jpg");
+	/* background-image: url("../img/indexbg.jpg"); */
 	background-position: center center;
 	background-size: 100%;
 	background-repeat: no-repeat;

@@ -6,7 +6,7 @@
         }
     </script>
     <!-- *** BACKGROUND *** -->
-    <section id="restaurant-page-bg">
+    <section id="restaurant-page-bg" style="background-image: url('<?php echo $info["rcover"] ?>')">
         <div class="restaurant-detail">
             <h2 class="detail-info"><?php echo $info["rname"] ?></h2>
             <p class="detail-info details">Phone: <?php echo $info["rphone"] ?></p>
@@ -127,7 +127,7 @@
                 <button type="submit" class="btn submit-comment" width="100px"> Submit </button>
             </form>
         </div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDquVJm5txorTXLfWgOQPBSRbRTKPi8EAU&callback=initMap" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUS_R8mh6O0QAbp2GG9mHMWez4pmWwjRQ&callback=initMap" async defer></script>
     <?php else : ?>
         <p class="text-center">Please sign in first!</p>
     <?php endif ?>

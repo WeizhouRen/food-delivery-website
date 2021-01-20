@@ -1,0 +1,9 @@
+﻿did,name,rid,price,photo,description
+1,Dish1,6,10.00,http://localhost/img/dishes/McDonald1.jpg,Dummy Description… Placeholder blablabla
+2,Dish2,6,11.50,http://localhost/img/dishes/McDonald2.jpg,Dummy Description… Placeholder blablabla
+3,Dish3,6,13.00,http://localhost/img/dishes/McDonald3.jpg,Dummy Description… Placeholder blablabla
+4,Dish4,6,12.50,http://localhost/img/dishes/McDonald5.png,Dummy Description… Placeholder blablabla
+5,Dish1,7,7.60,http://localhost/img/dishes/subway1.jpg,Dummy Description… Placeholder blablabla
+6,Dish2,7,6.60,http://localhost/img/dishes/subway2.jpg,Dummy Description… Placeholder blablabla
+7,Dish3,7,7.60,http://localhost/img/dishes/subway3.jpg,Dummy Description… Placeholder blablabla
+8,Dish4,7,6.60,http://localhost/img/dishes/subway4.jpg,Dummy Description… Placeholder blablabla
